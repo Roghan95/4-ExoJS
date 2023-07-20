@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="board"></div>
+
+    <script>
+        // Créer une div avec la classe "box"
+        const box = document.createElement("div")
+        box.classList.add("box")
+        
+        // Sélectionner l'élément avec l'ID "board"
+        const board = document.querySelector("#board")
+        
+        // Initialiser un compteur à zéro
+        let nombre = 0;
+        
+        // Écouter l'événement de pression d'une touche sur la page
+        document.addEventListener("keydown", function(press) {
+            // Si le compteur est égal à 10 et que la touche pressée est "ArrowUp"
+            if (nombre = 10 && press.key === "ArrowUp") {
+                // Cloner la div "box" créée précédemment
+                const newbox = box.cloneNode()
+                // Ajouter la nouvelle div clonée au "board"
+                board.appendChild(newbox)
+                // Donner à la nouvelle div une couleur aléatoire en utilisant la fonction getRandomColor()
+                newbox.style.backgroundColor = getRandomColor()
+                // Augmenter le compteur
+                nombre++
+                // Ajoute un addEventListener au clic sur la nouvelle div
+                newbox.addEventListener("click", function(){
+                    // Changer la couleur de la div en noir lorsque l'on clique dessus
+                    newbox.style.backgroundColor = "black"
+                })
+            // Sinon, si la touche pressée est "ArrowDown"
+            } else if (press.key === "ArrowDown") {
+                // Supprimer le dernier enfant du "board"
+                board.lastChild.remove()
+                // Diminuer le compteur
+                nombre--
+            }
+        });
+        
+        // Fonction pour générer une couleur aléatoire
+        function getRandomColor() {
+            const letters = "0123456789ABCDEF"
+            let color = "#"
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)]
+            }
+            return color;
+        }
+        </script>
+</body>
+</html>

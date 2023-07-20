@@ -1,0 +1,11 @@
+#board {
+    display: flex;
+    flex-wrap: wrap;
+    width:900px;
+    
+    
+}
+.box{
+    width: 60px;
+    height: 60px;
+}
